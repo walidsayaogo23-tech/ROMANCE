@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr" data-preset="D">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>💌 Une lettre d'amour pour toi</title>
+  <meta name="description" content="Quelqu'un a une question très importante à te poser… Ouvre vite cette lettre scellée avec amour ! 💕">
+  <meta property="og:title" content="💌 Une lettre scellée pour toi">
+  <meta property="og:description" content="Quelqu'un a une question très importante à te poser… Ouvre vite ! 💕">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ═══ SVG Grain Filter ═══ -->
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </svg>
+
+  <!-- Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Sound Toggle Button -->
+  <button id="sound-toggle" aria-label="Activer le son" aria-pressed="false" type="button">🔇</button>
+
+  <!-- Floating Elements Container -->
+  <div id="floating-container" aria-hidden="true"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" aria-live="assertive"></div>
+
+  <!-- Main Content Container -->
+  <main id="app">
+
+    <!-- ═══════════════════════════════════════════
+         1. CREATOR SCREEN (MULTI-STEP SAAS WIZARD)
+         ═══════════════════════════════════════════ -->
+    <section id="creator-screen" class="screen active" role="region" aria-label="Créer ta lettre d'amour">
+      <div class="card">
+        <div class="wizard-header">
+          <span class="wizard-badge">💌 Studio d'amour</span>
+          <h1 class="wizard-title">Compose ta lettre</h1>
+          <p class="wizard-subtitle">Crée une demande romantique irrésistible et partage-la !</p>
+        </div>
+
+        <!-- Stepper Navigation Indicator -->
+        <div class="stepper-nav" aria-label="Étapes du formulaire">
+          <div class="stepper-progress-fill" id="stepper-progress-fill" style="width: 0%;"></div>
+          <div class="step-item active" id="stepper-item-1" title="Étape 1 : Les amoureux">1</div>
+          <div class="step-item" id="stepper-item-2" title="Étape 2 : La question">2</div>
+          <div class="step-item" id="stepper-item-3" title="Étape 3 : L'ambiance">3</div>
+        </div>
+
+        <!-- ÉTAPE 1 : LES AMOUREUX -->
+        <div class="form-step active" id="step-1">
+          <h2 class="step-legend-title">💕 Étape 1 : Qui sont les amoureux ?</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="field-to">💌 Prénom du destinataire</label>
+            <input type="text" class="form-input" id="field-to" maxlength="30" placeholder="Ex : Samira" autocomplete="off" required>
+            <p class="form-hint">La personne qui recevra cette demande magique.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-from">✍️ Ton prénom</label>
+            <input type="text" class="form-input" id="field-from" maxlength="30" placeholder="Ex : Walid" autocomplete="off">
+            <p class="form-hint">Pour qu'elle sache de qui vient cette belle lettre.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-tel">📱 Numéro WhatsApp (optionnel)</label>
+            <input type="tel" class="form-input" id="field-tel" placeholder="Ex : +33612345678" autocomplete="off">
+            <p class="form-hint">Pour qu'elle puisse te prévenir en un clic dès qu'elle dit OUI !</p>
+          </div>
+
+          <div class="btn-nav-row">
+            <button type="button" class="btn-oui btn-full" id="btn-step1-next">
+              Continuer vers la question <span class="btn-icon-right">➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 : LA DEMANDE & LE TON -->
+        <div class="form-step" id="step-2">
+          <h2 class="step-legend-title">💬 Étape 2 : Ta question & Le ton</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="field-question">💬 Ta question romantique</label>
+            <textarea class="form-textarea" id="field-question" maxlength="140" rows="2" placeholder="Tu veux être avec moi ? 💕"></textarea>
+            
+            <div class="prompt-chips">
+              <button type="button" class="prompt-chip" data-text="Tu veux être avec moi ? 💕">💡 Tu veux être avec moi ? 💕</button>
+              <button type="button" class="prompt-chip" data-text="Tu veux sortir avec moi ? 🌹">💡 Tu veux sortir avec moi ? 🌹</button>
+              <button type="button" class="prompt-chip" data-text="Veux-tu être ma Valentine ? 💖">💡 Veux-tu être ma Valentine ? 💖</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">🎭 Ton de l'expérience</label>
+            <div class="radio-group">
+              <input type="radio" name="ton" value="mignon" id="ton-mignon" class="radio-pill" checked>
+              <label for="ton-mignon">🥺 Mignon</label>
+
+              <input type="radio" name="ton" value="dramatique" id="ton-drama" class="radio-pill">
+              <label for="ton-drama">🎭 Dramatique</label>
+
+              <input type="radio" name="ton" value="chaotique" id="ton-chaos" class="radio-pill">
+              <label for="ton-chaos">🤪 Chaotique</label>
+            </div>
+            <p class="form-hint">Définit les réactions comiques du bouton Non quand elle essaie de refuser !</p>
+          </div>
+
+          <div class="btn-nav-row">
+            <button type="button" class="btn-secondary" id="btn-step2-prev">
+              <span class="btn-icon-left">←</span> Retour
+            </button>
+            <button type="button" class="btn-oui" id="btn-step2-next">
+              Suivant <span class="btn-icon-right">➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 : L'AMBIANCE & PERSONNALISATION -->
+        <div class="form-step" id="step-3">
+          <h2 class="step-legend-title">🎨 Étape 3 : Style & Magie</h2>
+
+          <div class="form-group">
+            <label class="form-label">🎨 Ambiance visuelle</label>
+            <div class="radio-group">
+              <input type="radio" name="preset" value="D" id="preset-d" class="radio-pill" checked>
+              <label for="preset-d">✉️ Papier Vintage</label>
+
+              <input type="radio" name="preset" value="A" id="preset-a" class="radio-pill">
+              <label for="preset-a">🍑 Douceur Pêche</label>
+
+              <input type="radio" name="preset" value="B" id="preset-b" class="radio-pill">
+              <label for="preset-b">🌙 Nuit Étoilée</label>
+
+              <input type="radio" name="preset" value="C" id="preset-c" class="radio-pill">
+              <label for="preset-c">🎨 Pop Rétro</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-imgurl">🔗 Image en ligne (optionnelle)</label>
+            <input type="url" class="form-input" id="field-imgurl" placeholder="https://..." autocomplete="off">
+            <p class="form-hint">Cette photo apparaîtra au cœur de la lettre.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="field-photos">📷 Photos locales (max 5)</label>
+            <input type="file" id="field-photos" accept="image/*" multiple style="font-size: 0.85rem; margin-top: 0.25rem;">
+            <div id="photo-previews" class="photo-grid"></div>
+          </div>
+
+          <!-- Aperçu en direct -->
+          <div class="preview-section">
+            <p class="preview-label">— Aperçu en direct de ta lettre —</p>
+            <div class="preview-mini-card">
+              <p class="preview-greeting" id="preview-greeting">Chère Samira,</p>
+              <p class="preview-question" id="preview-question">Tu veux être avec moi ? 💕</p>
+              <div class="preview-emoji" id="preview-emoji">🥺</div>
+              <div class="preview-btns">
+                <span class="preview-btn-oui">OUI 💕</span>
+                <span class="preview-btn-non">Non</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-nav-row">
+            <button type="button" class="btn-secondary" id="btn-step3-prev">
+              <span class="btn-icon-left">←</span> Retour
+            </button>
+            <button type="button" class="btn-oui" id="btn-generate">
+              💌 Générer ma lettre d'amour
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         2. SHARE SCREEN (LETTRE PRÊTE À ENVOYER)
+         ═══════════════════════════════════════════ -->
+    <section id="share-screen" class="screen" role="region" aria-label="Partager ta lettre d'amour">
+      <div class="card share-ready-card">
+        <span class="wizard-badge">💌 Lettre Prête & Scellée</span>
+        <h1 class="wizard-title">Ton enveloppe est prête !</h1>
+        <p class="wizard-subtitle">
+          Scellée avec un cœur battant pour <strong id="share-to-badge">Samira</strong>. Envoie-la vite !
+        </p>
+
+        <!-- 3D Envelope Preview -->
+        <div class="envelope-container" id="share-envelope-preview" title="Aperçu de ton enveloppe">
+          <div class="envelope-outer">
+            <div class="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="envelope-letter">
+              <div class="envelope-letter-title">Pour toi 💕</div>
+              <div class="envelope-letter-sub">Une question très importante…</div>
+            </div>
+            <div class="envelope-heart-seal" aria-hidden="true">❤️</div>
+          </div>
+        </div>
+
+        <div class="share-links-container">
+          <div class="share-url-box">
+            <span class="share-url-text" id="share-url-display">https://...</span>
+          </div>
+
+          <div class="share-buttons-stack">
+            <a id="btn-share-whatsapp" class="btn-whatsapp btn-full" href="#" target="_blank" rel="noopener">
+              💬 Envoyer directement sur WhatsApp
+            </a>
+            <button type="button" class="btn-oui btn-full" id="btn-copy-share">
+              📋 Copier le lien d'amour
+            </button>
+            <button type="button" class="btn-sauge btn-full" id="btn-native-share">
+              📤 Partager (Instagram, SMS, Messenger)
+            </button>
+            <button type="button" class="btn-gold btn-full" id="btn-test-envelope">
+              👀 Tester l'ouverture de l'enveloppe
+            </button>
+            <button type="button" class="btn-secondary btn-full" id="btn-edit-letter">
+              ✏️ Modifier ma lettre
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         3. ENVELOPE SCREEN (RITUEL D'OUVERTURE POUR LE DESTINATAIRE)
+         ═══════════════════════════════════════════ -->
+    <section id="envelope-screen" class="screen" role="region" aria-label="Enveloppe scellée">
+      <div class="card envelope-screen-card">
+        <div class="stamp" aria-hidden="true">💌</div>
+        
+        <h1 class="wizard-title" id="envelope-screen-title">Une lettre scellée pour toi 💌</h1>
+        <p class="wizard-subtitle">
+          De la part de <strong id="envelope-from-name">Walid</strong>
+        </p>
+
+        <!-- Interactive 3D Envelope -->
+        <div class="envelope-container" id="interactive-envelope" role="button" tabindex="0" aria-label="Cliquer pour ouvrir l'enveloppe">
+          <div class="envelope-outer">
+            <div class="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="envelope-letter">
+              <div class="envelope-letter-title" id="envelope-letter-inner-title">💌 Question secrète…</div>
+              <div class="envelope-letter-sub">Ouvre grand ton cœur !</div>
+            </div>
+            <div class="envelope-heart-seal" id="envelope-heart-btn" aria-hidden="true">❤️</div>
+          </div>
+        </div>
+
+        <div class="envelope-cta-badge">
+          ❤️ Clique sur le cœur pour ouvrir ta lettre
+        </div>
+
+        <div class="wax-seal" aria-hidden="true" style="margin-top:1.5rem">💕</div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         4. QUESTION SCREEN (LETTRE OUVERTE AVEC BOUTON NON FARCEUR)
+         ═══════════════════════════════════════════ -->
+    <section id="question-screen" class="screen" role="region" aria-label="La question romantique">
+      <div class="card" id="question-card">
+        <div class="stamp" aria-hidden="true">💌</div>
+
+        <p class="letter-greeting" id="q-greeting">Chère Samira,</p>
+        <h1 class="letter-question" id="q-question">Tu veux être avec moi ? 💕</h1>
+
+        <div class="stage-image" id="q-image" aria-hidden="true">💌</div>
+        <p class="stage-legend" id="q-legend"></p>
+
+        <div aria-live="polite" aria-atomic="true">
+          <p class="stage-message" id="q-message">
+            <span class="sr-only" id="sr-welcome">Quelqu'un a une question importante pour toi. Choisis OUI ou Non.</span>
+          </p>
+        </div>
+
+        <div class="btn-container" id="btn-container">
+          <button type="button" class="btn-oui" id="btn-oui">OUI 💕</button>
+          <button type="button" class="btn-non" id="btn-non">Non</button>
+        </div>
+
+        <p class="letter-footer" id="q-footer">Avec tout mon amour, Walid 💌</p>
+        <div class="wax-seal" aria-hidden="true">❤</div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         5. CELEBRATION SCREEN (EXPLOSION DE BONHEUR)
+         ═══════════════════════════════════════════ -->
+    <section id="celebration-screen" class="screen" role="region" aria-label="Célébration">
+      <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+      <div class="celebration-card">
+        <div class="celebration-title" id="celeb-title">OUIII ! 🎉💖</div>
+        <div class="celebration-image" id="celeb-image">🥰</div>
+        <p class="celebration-message" id="celeb-message">Elle a dit OUI ! Je suis tellement content ! 💕</p>
+        <p class="celebration-counter" id="celeb-counter"></p>
+        
+        <div class="celebration-actions">
+          <a id="celeb-notify" class="btn-whatsapp btn-full" href="#" target="_blank" rel="noopener">
+            💬 Prévenir sur WhatsApp
+          </a>
+          <button type="button" class="btn-oui btn-full" id="celeb-copy">
+            📋 Copier le lien
+          </button>
+          <button type="button" class="btn-secondary btn-full" id="celeb-create">
+            ✨ Créer ma propre page
+          </button>
+        </div>
+
+        <div class="wax-seal" aria-hidden="true" style="margin-top:1.25rem">💕</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- External Script -->
+  <script src="app.js"></script>
+</body>
+</html>
