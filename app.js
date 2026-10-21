@@ -175,11 +175,11 @@
       ],
     },
 
-    // Messages de célébration personnalisés et joyeux (première personne)
+    // Messages de célébration plein d'émotion, de gratitude et de bonheur (adressés directement à la personne : "Tu as dit OUI !")
     messageFinal: {
-      mignon: 'Waouh, je n\'en crois pas mes yeux ! 🥰 Elle a dit OUI, je suis tellement content ! 💕',
-      dramatique: 'Elle a dit OUI ! 🎭 Mon cœur explose de joie, je n\'en crois pas mes yeux ! 🌟💕',
-      chaotique: 'C\'EST UN GRAND OUI ! 🤯 Je suis sur un petit nuage, je n\'en crois pas mes yeux ! 🚀✨',
+      mignon: 'Tu as dit OUI ! 🎉💖 Mon cœur déborde de joie et d\'émotion… Merci infiniment d\'illuminer ma vie. Je te promets d\'aimer et de chérir chaque instant à tes côtés ! 💕✨',
+      dramatique: 'Tu as dit OUI ! 🌟💖 Le soleil renaît dans mon ciel ! Mon cœur est rempli d\'une reconnaissance infinie, je te promets un amour éternel et sincère ! 🌹✨',
+      chaotique: 'Tu as dit OUI ! 🚀💖 C\'est le plus beau jour de ma vie ! Merci pour ce bonheur immense, je t\'aime tellement fort ! 🥰✨',
     },
 
     // Paliers de physique du bouton "Non"
@@ -497,54 +497,30 @@
     if (!btnOui || !btnNon) return;
 
     const stage = etat.tentatives;
-    const p = CONFIG.paliers;
 
     if (stage === 0) {
       btnNon.style.transform = '';
-      btnNon.style.opacity = '';
-      btnNon.style.display = '';
+      btnNon.style.opacity = '1';
+      btnNon.style.display = 'inline-flex';
       btnOui.style.transform = '';
       btnOui.style.width = '';
       btnOui.style.fontSize = '';
       return;
     }
 
-    // Le bouton OUI grandit à chaque tentative
-    const ouiScale = 1 + Math.min(stage, 6) * p.growStep;
+    // Le bouton OUI grossit avec douceur et modération, sans jamais empiéter sur le bouton Non
+    const ouiScale = 1 + Math.min(stage, 4) * 0.05;
     btnOui.style.transform = `scale(${ouiScale})`;
+    btnOui.style.width = '';
 
-    if (stage >= 7) {
-      // Le bouton Non disparaît définitivement
-      btnNon.style.display = 'none';
-      btnNon.setAttribute('aria-hidden', 'true');
-      btnNon.tabIndex = -1;
+    // Le bouton Non reste TOUJOURS visible, propre et bien séparé du Oui
+    btnNon.style.display = 'inline-flex';
+    btnNon.style.opacity = '1';
 
-      // Le bouton OUI occupe toute la largeur
-      btnOui.style.transform = 'scale(1.04)';
-      btnOui.style.width = '100%';
-      btnOui.style.fontSize = '1.3rem';
-      btnOui.focus();
-    } else if (stage >= 5) {
-      // Non devient quasi transparent et très petit
-      const nonScale = Math.max(0.48, 1 - stage * 0.08);
-      const offsetX = (Math.random() - 0.5) * 36;
-      const offsetY = (Math.random() - 0.5) * 16;
-      btnNon.style.opacity = String(p.fadeOpacity);
-      btnNon.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${nonScale})`;
-      btnOui.style.width = '70%';
-    } else if (stage >= 3) {
-      // Non esquive avec un petit saut comique à l'intérieur de la carte
-      const nonScale = Math.max(0.58, 1 - stage * 0.08);
-      const offsetX = (Math.random() > 0.5 ? 1 : -1) * (18 + Math.random() * 22);
-      const offsetY = (Math.random() - 0.5) * 14;
-      btnNon.style.opacity = '0.85';
-      btnNon.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${nonScale})`;
-    } else if (stage >= 1) {
-      // Non rétrécit et s'incline légèrement
-      const nonScale = 1 - stage * p.shrinkStep;
-      const rot = (stage % 2 === 1 ? -3 : 3);
-      btnNon.style.transform = `scale(${Math.max(nonScale, 0.65)}) rotate(${rot}deg)`;
-    }
+    // Léger rétrécissement progressif très doux pour marquer l'hésitation
+    const nonScale = Math.max(0.85, 1 - stage * 0.02);
+    const rot = (stage % 2 === 1 ? -2.5 : 2.5);
+    btnNon.style.transform = `scale(${nonScale}) rotate(${rot}deg)`;
   }
 
   function shakeCard() {
@@ -559,17 +535,16 @@
   function renderCelebration(cfg) {
     const msg = CONFIG.messageFinal[cfg.ton] || CONFIG.messageFinal.mignon;
 
+    const celebTitle = document.getElementById('celeb-title');
     const celebMsg = document.getElementById('celeb-message');
-    const celebCounter = document.getElementById('celeb-counter');
     const notifyBtn = document.getElementById('celeb-notify');
     const notifyText = document.getElementById('celeb-notify-text');
 
+    if (celebTitle) celebTitle.textContent = "TU AS DIT OUI ! 🎉💖🥰";
     if (celebMsg) celebMsg.textContent = msg;
-    if (celebCounter) celebCounter.textContent = pluralize(etat.tentatives);
 
     // Préparation de l'envoi WhatsApp pour prévenir l'expéditeur
     const expName = (cfg.prenomExpediteur || '').trim();
-    const destName = (cfg.prenomDestinataire || '').trim();
 
     const messageOui = expName
       ? `Coucou ${expName} ! 💌 J'ai ouvert ta lettre et… J'AI DIT OUI ! 🎉💖🥰 Je suis tellement heureuse ! 💕✨`
@@ -592,6 +567,44 @@
     if (notifyText) {
       notifyText.textContent = expName ? `Prévenir ${expName} sur WhatsApp 💬` : `Prévenir sur WhatsApp 💬`;
     }
+  }
+
+  function renderHeartbreak(cfg) {
+    const msgEl = document.getElementById('heartbreak-message');
+    const waBtn = document.getElementById('heartbreak-whatsapp');
+    const waText = document.getElementById('heartbreak-whatsapp-text');
+
+    const destName = (cfg.prenomDestinataire || '').trim();
+    const expName = (cfg.prenomExpediteur || '').trim();
+
+    if (msgEl) {
+      msgEl.textContent = `J'espérais tellement de tout mon être qu'on soit ensemble… Ton refus me fait mal et j'ai le cœur brisé, car mes sentiments pour toi sont sincères et profonds. Mais je respecterai toujours ta décision… Prends grand soin de toi${destName ? ', ' + destName : ''}. 🕊️🥺`;
+    }
+
+    if (waBtn) {
+      const waMsg = encodeURIComponent(
+        `Coucou${expName ? ' ' + expName : ''}… 🕊️\n` +
+        `J'ai bien reçu ta lettre d'amour. Je voulais t'écrire pour te dire que ça m'a beaucoup touchée… Prends bien soin de toi. 🥺`
+      );
+      let waUrl = `https://api.whatsapp.com/send?text=${waMsg}`;
+      if (cfg.telephoneExpediteur) {
+        const cleanTel = cfg.telephoneExpediteur.replace(/[^0-9]/g, '');
+        if (cleanTel) {
+          waUrl = `https://api.whatsapp.com/send?phone=${cleanTel}&text=${waMsg}`;
+        }
+      }
+      waBtn.href = waUrl;
+    }
+
+    if (waText && expName) {
+      waText.textContent = `Dire un mot à ${expName} sur WhatsApp 💬`;
+    }
+  }
+
+  function handleHeartbreak() {
+    renderHeartbreak(CONFIG);
+    showScreen('heartbreak');
+    playSound('pop');
   }
 
   // ════════════════════════════════════════════
@@ -1278,6 +1291,28 @@
       });
     }
 
+    // Actions écran de cœur brisé (refus final)
+    const btnHeartbreakRetry = document.getElementById('btn-heartbreak-retry');
+    if (btnHeartbreakRetry) {
+      btnHeartbreakRetry.addEventListener('click', () => {
+        ensureAudioCtx();
+        playSound('ding');
+        handleOui();
+      });
+    }
+
+    const btnHeartbreakBack = document.getElementById('btn-heartbreak-back');
+    if (btnHeartbreakBack) {
+      btnHeartbreakBack.addEventListener('click', () => {
+        ensureAudioCtx();
+        playSound('pop');
+        etat.tentatives = 0;
+        renderQuestionScreen(CONFIG);
+        showScreen('question');
+        updateButtonStates();
+      });
+    }
+
     // Repositionnement lors du redimensionnement
     window.addEventListener('resize', recalcNonPosition);
     window.addEventListener('orientationchange', () => {
@@ -1292,21 +1327,24 @@
 
     ensureAudioCtx();
 
-    etat.tentatives++;
     const etapes = CONFIG.etapes[CONFIG.ton] || CONFIG.etapes.mignon;
-    const stage = Math.min(etat.tentatives, etapes.length) - 1;
-    const etape = etapes[Math.max(0, stage)];
+
+    // Si on a vu toutes les supplications douces et qu'elle clique encore sur Non :
+    // On affiche l'écran touchant de cœur brisé !
+    if (etat.tentatives >= etapes.length) {
+      handleHeartbreak();
+      return;
+    }
+
+    const stage = etat.tentatives;
+    const etape = etapes[stage];
+
+    etat.tentatives++;
 
     updateStageDisplay(etape);
     shakeCard();
     updateButtonStates();
-
-    if (etat.isTouchDevice && etat.nonFloating && etat.tentatives >= 3 && etat.tentatives <= 4) {
-      jumpNonRandom();
-      playSound('whoosh');
-    } else {
-      playSound('pop');
-    }
+    playSound('pop');
   }
 
   function handleOui() {

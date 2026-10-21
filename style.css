@@ -1162,12 +1162,16 @@ button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
 }
 .btn-container {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   width: 100%;
+  position: relative;
+}
+#btn-oui, #btn-non {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-bounce), box-shadow 0.25s ease, background 0.25s ease;
 }
 .letter-footer {
   font-family: var(--font-title);
@@ -1201,7 +1205,7 @@ button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
 }
 .celebration-title {
   font-family: var(--font-title);
-  font-size: 2.9rem;
+  font-size: 2.8rem;
   color: var(--accent);
   margin-bottom: 0.5rem;
   animation: celebrationBounce 0.8s var(--ease-bounce) both;
@@ -1214,7 +1218,7 @@ button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
 
 .celebration-message {
   font-family: var(--font-title);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   color: var(--text);
   margin: 0.5rem 0;
   line-height: 1.4;
@@ -1224,13 +1228,41 @@ button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
   margin: 0.75rem 0;
   animation: celebrationBounce 0.8s 0.25s var(--ease-bounce) both;
 }
-.celebration-counter {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+.celebration-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+/* ═══════════════════════════════════════════
+   HEARTBREAK SCREEN (CŒUR BRISÉ TOUCHANT)
+   ═══════════════════════════════════════════ */
+.heartbreak-card {
+  border-color: rgba(194, 65, 93, 0.35);
+  box-shadow: 0 8px 40px rgba(194, 65, 93, 0.15);
+}
+.heartbreak-title {
+  font-family: var(--font-title);
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  animation: celebrationBounce 0.8s var(--ease-bounce) both;
+}
+.heartbreak-image {
+  font-size: 4rem;
+  margin: 0.75rem 0;
+  animation: heartPulse 2.4s infinite ease-in-out;
+}
+.heartbreak-message {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text);
   margin: 0.75rem 0 1.25rem;
+  line-height: 1.6;
   font-style: italic;
 }
-.celebration-actions {
+.heartbreak-actions {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
