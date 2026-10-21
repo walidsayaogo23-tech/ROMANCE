@@ -150,6 +150,7 @@ body {
   color: var(--text);
   background: linear-gradient(145deg, var(--bg-start) 0%, var(--bg-end) 100%);
   min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,10 +189,12 @@ h1, h2, h3 {
    ═══════════════════════════════════════════ */
 #app {
   width: 100%;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .screen {
@@ -543,7 +546,7 @@ h1, h2, h3 {
   flex: 1;
 }
 
-button, .btn-link-action {
+button, .btn-link-action, a[class*="btn-"] {
   font-family: var(--font-body);
   border: none;
   cursor: pointer;
@@ -555,7 +558,7 @@ button, .btn-link-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   text-decoration: none;
   transition:
     transform 0.25s var(--ease-hover),
@@ -567,10 +570,11 @@ button, .btn-link-action {
   -webkit-tap-highlight-color: transparent;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* Glowing shimmer effect on primary buttons */
-button::after, .btn-link-action::after {
+button::after, .btn-link-action::after, a[class*="btn-"]::after {
   content: '';
   position: absolute;
   top: -50%;
@@ -586,7 +590,7 @@ button::after, .btn-link-action::after {
   transform: translateX(-100%);
   pointer-events: none;
 }
-button:hover::after, .btn-link-action:hover::after {
+button:hover::after, .btn-link-action:hover::after, a[class*="btn-"]:hover::after {
   animation: btnShimmer 1.4s ease-in-out infinite;
 }
 
@@ -595,29 +599,35 @@ button:hover::after, .btn-link-action:hover::after {
   100% { transform: translateX(100%); }
 }
 
-button:hover, .btn-link-action:hover {
+button:hover, .btn-link-action:hover, a[class*="btn-"]:hover {
   transform: scale(1.03) translateY(-2px);
 }
-button:active, .btn-link-action:active {
+button:active, .btn-link-action:active, a[class*="btn-"]:active {
   transform: scale(0.97) translateY(0);
 }
-button:focus-visible, .btn-link-action:focus-visible {
+button:focus-visible, .btn-link-action:focus-visible, a[class*="btn-"]:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 3px;
+}
+
+.btn-icon-svg {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .btn-icon-right {
   display: inline-block;
   transition: transform 0.25s ease;
 }
-button:hover .btn-icon-right {
+button:hover .btn-icon-right, a[class*="btn-"]:hover .btn-icon-right {
   transform: translateX(4px);
 }
 .btn-icon-left {
   display: inline-block;
   transition: transform 0.25s ease;
 }
-button:hover .btn-icon-left {
+button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
   transform: translateX(-4px);
 }
 
@@ -657,13 +667,28 @@ button:hover .btn-icon-left {
   background: rgba(194, 65, 93, 0.07);
 }
 
+/* Bouton WhatsApp officiel raffiné */
 .btn-whatsapp {
-  background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-hover));
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.42);
+  letter-spacing: 0.2px;
 }
 .btn-whatsapp:hover {
-  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+  color: #ffffff !important;
+}
+
+/* Bouton Instagram officiel dégradé */
+.btn-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(220, 39, 67, 0.38);
+  letter-spacing: 0.2px;
+}
+.btn-instagram:hover {
+  box-shadow: 0 8px 28px rgba(220, 39, 67, 0.55);
+  color: #ffffff !important;
 }
 
 .btn-sauge {
@@ -682,6 +707,15 @@ button:hover .btn-icon-left {
   width: 100%;
 }
 
+.share-secondary-row {
+  display: flex;
+  gap: 0.65rem;
+  width: 100%;
+}
+.share-secondary-row button {
+  flex: 1;
+}
+
 /* ═══════════════════════════════════════════
    FLOATING ELEMENTS (BACKGROUND)
    ═══════════════════════════════════════════ */
@@ -691,6 +725,8 @@ button:hover .btn-icon-left {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  contain: strict;
+  clip-path: inset(0);
 }
 .floating-el {
   position: absolute;
@@ -911,26 +947,76 @@ button:hover .btn-icon-left {
   margin: 1.25rem 0;
   width: 100%;
 }
-.share-url-box {
+/* Carte de la lettre prête à envoyer (style parchemin postal) */
+.letter-preview-box {
+  background: var(--card-bg);
+  border: 1.5px dashed var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.03);
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+.letter-preview-box:hover {
+  border-color: var(--accent);
+}
+
+.letter-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px dashed var(--card-border);
+}
+
+.letter-preview-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
   display: flex;
   align-items: center;
-  background: var(--bg-start);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-input);
-  padding: 0.4rem 0.6rem;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.35rem;
 }
-.share-url-text {
-  flex: 1;
-  font-family: monospace;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
+
+.btn-copy-chip {
+  background: rgba(194, 65, 93, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(194, 65, 93, 0.25);
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+  min-height: auto;
 }
+.btn-copy-chip:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.letter-preview-body {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  color: var(--text);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 170px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  scrollbar-width: thin;
+}
+
 .share-buttons-stack {
   display: flex;
   flex-direction: column;
@@ -1034,6 +1120,15 @@ button:hover .btn-icon-left {
   text-align: center;
   margin-bottom: 0.75rem;
   line-height: 1.25;
+  transition: transform 0.35s var(--ease-bounce), opacity 0.3s ease;
+}
+.letter-question.pulse-text {
+  animation: questionPulse 0.5s var(--ease-bounce);
+}
+@keyframes questionPulse {
+  0% { transform: scale(0.92); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 .stage-image {
   font-size: 4rem;
@@ -1158,13 +1253,15 @@ button:hover .btn-icon-left {
   font-family: var(--font-body);
   z-index: 10000;
   opacity: 0;
-  transition: all 0.4s var(--ease-bounce);
+  visibility: hidden;
+  transition: transform 0.4s var(--ease-bounce), opacity 0.4s ease, visibility 0.4s;
   pointer-events: none;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
 }
 .toast.visible {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
+  visibility: visible;
 }
 
 /* ═══════════════════════════════════════════
@@ -1198,12 +1295,38 @@ button:hover .btn-icon-left {
 /* ═══════════════════════════════════════════
    RESPONSIVE DESIGN
    ═══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  #app {
+    padding: 0.75rem;
+  }
+  .card {
+    padding: 2rem 1.4rem 1.75rem;
+  }
+  .wizard-title {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 380px) {
-  .card { padding: 1.75rem 1.25rem 1.5rem; }
-  .wizard-title { font-size: 1.85rem; }
-  .letter-question { font-size: 1.65rem; }
-  .stage-image { font-size: 3rem; }
-  .envelope-container { width: 260px; height: 180px; }
+  #app {
+    padding: 0.5rem;
+  }
+  .card {
+    padding: 1.75rem 1.15rem 1.5rem;
+  }
+  .wizard-title {
+    font-size: 1.85rem;
+  }
+  .letter-question {
+    font-size: 1.65rem;
+  }
+  .stage-image {
+    font-size: 3rem;
+  }
+  .envelope-container {
+    width: 260px;
+    height: 180px;
+  }
   .envelope-pocket {
     border-left-width: 130px;
     border-right-width: 130px;

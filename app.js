@@ -21,37 +21,157 @@
     preset: 'D',
     imageUrl: '',
 
-    // Étapes par ton (8 paliers pour le bouton Non)
+    // Étapes par ton (8 paliers pour le bouton Non avec question principale dynamique)
     etapes: {
       mignon: [
-        { message: 'Non ? Vraiment vraiment ? 🥺', image: '🥺', legende: 'ces yeux te jugent tendrement' },
-        { message: 'Mais… regarde ces petits yeux… 🥺👉👈', image: '🐻', legende: 'même l\'ourson te supplie' },
-        { message: 'S\'il te plaîîît… je ferai des crêpes ! 🥞💕', image: '🥞', legende: 'avec du chocolat ET des fraises' },
-        { message: 'Mon petit cœur fait boum boum boum… 💗', image: '💓', legende: 'écoute bien… tu l\'entends battre ?' },
-        { message: 'Je vais pleurer des mini larmes de panda… 🐼', image: '🐼', legende: 'alerte mignonnerie en détresse' },
-        { message: '*snif* Mon cœur fond comme un nuage de guimauve… 🫠', image: '🫠', legende: 'fonte émotionnelle maximale' },
-        { message: 'Le bouton Non a fui… il n\'assume plus du tout ! 😤', image: '🚪', legende: 'porte claquée, adieu !' },
-        { message: 'Il ne reste qu\'une seule réponse possible… la meilleure 💕', image: '✨', legende: 'le destin a déjà choisi' },
+        {
+          question: 'Tu es vraiment sûre ? Regarde mes petits yeux… 🥺',
+          message: 'S\'il te plaît, sinon ça me ferait trop de peine… 💔🥺',
+          image: '🥺',
+          legende: 'ces yeux te supplient tendrement'
+        },
+        {
+          question: 'S\'il te plaît… Ne me brise pas le cœur ! 💔🥺',
+          message: 'Même le petit ourson te demande pardon à genoux… 🐻👉👈',
+          image: '🐻',
+          legende: 'un regard plein de douceur et d\'espoir'
+        },
+        {
+          question: 'Allez dis oui… Je te promets qu\'on sera si bien ! 🥞💕',
+          message: 'Je te ferai des crêpes au chocolat et plein de câlins ! 🥞🍓',
+          image: '🥞',
+          legende: 'tentative de corruption gourmande'
+        },
+        {
+          question: 'Mon petit cœur ne tiendra jamais le choc… 💓',
+          message: 'Écoute bien… il bat si fort pour toi : boum boum boum… 💗',
+          image: '💓',
+          legende: 'rythme cardiaque en ébullition'
+        },
+        {
+          question: 'Tu vas vraiment me laisser pleurer toutes mes larmes ? 🐼',
+          message: 'Alerte mignonnerie en détresse absolue… *snif* 🥺',
+          image: '🐼',
+          legende: 'le petit panda a le cœur lourd'
+        },
+        {
+          question: 'Je fonds d\'amour pour toi, s\'il te plaît dis oui ! 🫠💕',
+          message: 'Mon cœur fond comme un nuage de guimauve sous ton regard… 🫠',
+          image: '🫠',
+          legende: 'fonte émotionnelle maximale'
+        },
+        {
+          question: 'Regarde : même le bouton Non s\'est enfui de honte ! 🚪😤',
+          message: 'Il a démissionné ! Il ne reste plus que l\'amour vrai… 💕',
+          image: '🚪',
+          legende: 'porte claquée, le refus n\'existe plus'
+        },
+        {
+          question: 'Le destin l\'a décidé : nous deux, c\'est pour toujours ! ✨💖',
+          message: 'Clique sur ce grand OUI qui n\'attend que toi ! 🥰',
+          image: '✨',
+          legende: 'la seule et unique réponse de l\'univers'
+        },
       ],
       dramatique: [
-        { message: 'Non ?! Mon cœur… il se brise en mille éclats ! 💔', image: '💔', legende: 'tragédie en direct' },
-        { message: '*tombe à genoux sous la pluie* Pourquoi tant de cruauté ?! 😭', image: '🧎', legende: 'acte II, la désolation' },
-        { message: 'Le ciel s\'assombrit… les violons sanglotent… 🎻', image: '🌧️', legende: 'tempête sentimentale de catégorie 5' },
-        { message: 'Shakespeare lui-même n\'a jamais écrit drame si poignant 📜', image: '📜', legende: 'un requiem pour cet amour' },
-        { message: 'Mon âme vacille… je défaille sur un lit de pétales flétris… 🥀', image: '🥀', legende: 'le rideau tremble' },
-        { message: '*l\'orchestre symphonique s\'affole au loin* 🎭🎺', image: '🎭', legende: 'tension insoutenable' },
-        { message: 'Le bouton Non a succombé sous le poids de la fatalité ⚰️', image: '🌹', legende: 'adieu, pauvre bouton Non' },
-        { message: 'Le triomphe de l\'amour est inéluctable… OUI t\'attend 🌟', image: '🌟', legende: 'dénouement romanesque' },
+        {
+          question: 'Non ?! Tu oses poignarder mon cœur en plein vol ?! 💔',
+          message: 'S\'il te plaît… sinon mon âme sombrera dans un abîme sans fin ! 😭',
+          image: '💔',
+          legende: 'tragédie en direct'
+        },
+        {
+          question: 'S\'il te plaît, épargne-moi cette agonie sans fin ! 🧎😭',
+          message: '*tombe à genoux sous la pluie torrentielle* Pourquoi tant de cruauté ?!',
+          image: '🧎',
+          legende: 'acte II, la désolation sentimentale'
+        },
+        {
+          question: 'Le ciel s\'assombrit… Les violons de mon âme sanglotent ! 🎻',
+          message: 'Tempête sentimentale de catégorie 5 en approche immédiate… 🌧️',
+          image: '🌧️',
+          legende: 'le tonnerre gronde'
+        },
+        {
+          question: 'Même Shakespeare n\'aurait osé écrire un tel supplice ! 📜',
+          message: 'Un requiem poignant pour cet amour flamboyant… 🥀',
+          image: '📜',
+          legende: 'acte III, les larmes du poète'
+        },
+        {
+          question: 'Mon âme vacille… Je défaille sur un lit de pétales flétris… 🥀',
+          message: 'Vois ce pauvre amant transi qui tremble dans l\'ombre… 🥀',
+          image: '🥀',
+          legende: 'le rideau tremble'
+        },
+        {
+          question: 'L\'orchestre symphonique s\'affole au loin… Suspens fatal ! 🎭🎺',
+          message: 'Tension insoutenable… Vas-tu enfin prononcer ce OUI libérateur ? 🌟',
+          image: '🎭',
+          legende: 'dénouement tragique imminent'
+        },
+        {
+          question: 'Le bouton Non a succombé sous le poids de la fatalité 🌹⚰️',
+          message: 'Adieu, pauvre bouton Non ! La douleur a brisé ses rouages… 🌹',
+          image: '🌹',
+          legende: 'la fin du refus'
+        },
+        {
+          question: 'Le triomphe de l\'amour est inéluctable… Dis OUI ! 🌟💕',
+          message: 'Notre destin s\'illumine d\'une grâce éternelle ! 💖',
+          image: '🌟',
+          legende: 'triomphe romanesque absolu'
+        },
       ],
       chaotique: [
-        { message: 'Attends… t\'as vraiment osé cliquer là ? 🤔', image: '🤨', legende: 'erreur 404 : refus non accepté' },
-        { message: 'Le bouton Non est parti googler "comment démissionner" 💻', image: '💻', legende: 'requête envoyée au serveur' },
-        { message: 'ALERTE ROUGE : le bouton Non refuse d\'obéir ! 🚨', image: '🚨', legende: 'panique dans la matrice' },
-        { message: 'Le bouton Non a déposé un préavis de grève immédiat 📝', image: '📝', legende: 'syndicat des boutons fatigués' },
-        { message: 'Le bouton Non est en PLS totale sous le canapé 🫠', image: '🫠', legende: 'tentative de survie' },
-        { message: 'FLASH INFO : le bouton Non a quitté la galaxie 📰🚀', image: '🛸', legende: 'mission spatiale improvisée' },
-        { message: 'Le bouton Non a glitché dans une faille temporelle 👾', image: '⚡', legende: 'plus aucun signal' },
-        { message: 'Plot twist : le destin n\'accepte que le OUI ! 🤯', image: '🤯', legende: 'victoire cosmique de l\'amour' },
+        {
+          question: 'Attends… t\'as vraiment osé appuyer sur Non ?! 🤨',
+          message: 'S\'il te plaît, réfléchis bien avant de faire crasher tout le serveur ! 🤔',
+          image: '🤨',
+          legende: 'erreur 404 : refus non accepté'
+        },
+        {
+          question: 'S\'il te plaît… Ne force pas le système à imploser ! 💻',
+          message: 'Le bouton Non est parti sur Google taper "comment démissionner" 💻',
+          image: '💻',
+          legende: 'requête d\'urgence envoyée'
+        },
+        {
+          question: 'ALERTE ROUGE : tentative de refus non autorisée ! 🚨',
+          message: 'Panique générale dans la matrice sentimentale ! 💥',
+          image: '🚨',
+          legende: 'alarme maximale'
+        },
+        {
+          question: 'Le bouton Non a officiellement posé un préavis de grève ! 📝',
+          message: 'Syndicat des boutons fatigués : "Trop c\'est trop !" ☕',
+          image: '📝',
+          legende: 'grève reconductible'
+        },
+        {
+          question: 'Mon système interne est en PLS totale sous le canapé 🫠',
+          message: 'Surcharge émotionnelle critique… Vite, clique sur OUI ! ⚡',
+          image: '🫠',
+          legende: 'tentative de survie logicielle'
+        },
+        {
+          question: 'FLASH INFO : Le bouton Non a fui vers une autre galaxie ! 🚀',
+          message: 'Mission spatiale improvisée pour fuir cette décision insensée ! 🛸',
+          image: '🛸',
+          legende: 'fusée en orbite'
+        },
+        {
+          question: 'Le bouton Non s\'est désintégré dans une faille temporelle 👾',
+          message: 'Signal définitivement perdu ! Il ne reste qu\'un écran tout rose ! 💖',
+          image: '⚡',
+          legende: 'plus aucun signal'
+        },
+        {
+          question: 'Plot twist : Tu n\'as plus d\'autre choix que d\'être à moi ! 🤯',
+          message: 'Victoire cosmique et intergalactique de l\'amour ! 🚀✨',
+          image: '🤯',
+          legende: 'game over pour le Non'
+        },
       ],
     },
 
@@ -313,15 +433,27 @@
   }
 
   function updateStageDisplay(etape) {
+    const questionEl = document.getElementById('q-question');
     const imgEl = document.getElementById('q-image');
     const legendEl = document.getElementById('q-legend');
     const msgEl = document.getElementById('q-message');
 
     if (!etape) {
+      if (questionEl) questionEl.textContent = CONFIG.question;
       if (imgEl) imgEl.textContent = '💌';
       if (legendEl) legendEl.textContent = '';
       if (msgEl) msgEl.textContent = '';
       return;
+    }
+
+    // Mise à jour DYNAMIQUE de la phrase / question principale
+    if (questionEl && etape.question) {
+      questionEl.textContent = etape.question;
+      if (!etat.reducedMotion) {
+        questionEl.classList.remove('pulse-text');
+        void questionEl.offsetWidth; // Déclenche le reflow pour relancer l'animation
+        questionEl.classList.add('pulse-text');
+      }
     }
 
     if (imgEl) {
@@ -345,7 +477,18 @@
     }
 
     if (legendEl) legendEl.textContent = etape.legende || '';
-    if (msgEl) msgEl.textContent = etape.message;
+    if (msgEl) {
+      msgEl.textContent = etape.message;
+      if (!etat.reducedMotion) {
+        msgEl.style.opacity = '0';
+        msgEl.style.transform = 'translateY(6px)';
+        requestAnimationFrame(() => {
+          msgEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          msgEl.style.opacity = '1';
+          msgEl.style.transform = 'translateY(0)';
+        });
+      }
+    }
   }
 
   function updateButtonStates() {
@@ -356,7 +499,15 @@
     const stage = etat.tentatives;
     const p = CONFIG.paliers;
 
-    if (stage === 0) return;
+    if (stage === 0) {
+      btnNon.style.transform = '';
+      btnNon.style.opacity = '';
+      btnNon.style.display = '';
+      btnOui.style.transform = '';
+      btnOui.style.width = '';
+      btnOui.style.fontSize = '';
+      return;
+    }
 
     // Le bouton OUI grandit à chaque tentative
     const ouiScale = 1 + Math.min(stage, 6) * p.growStep;
@@ -367,131 +518,33 @@
       btnNon.style.display = 'none';
       btnNon.setAttribute('aria-hidden', 'true');
       btnNon.tabIndex = -1;
-      etat.nonFloating = false;
 
       // Le bouton OUI occupe toute la largeur
-      btnOui.style.transform = 'scale(1.05)';
+      btnOui.style.transform = 'scale(1.04)';
       btnOui.style.width = '100%';
-      btnOui.style.fontSize = '1.35rem';
-      btnOui.style.padding = '1.1rem 2rem';
+      btnOui.style.fontSize = '1.3rem';
       btnOui.focus();
-
-      document.removeEventListener('pointermove', handlePointerMoveForFlee);
     } else if (stage >= 5) {
-      // Non devient quasi transparent
+      // Non devient quasi transparent et très petit
+      const nonScale = Math.max(0.48, 1 - stage * 0.08);
+      const offsetX = (Math.random() - 0.5) * 36;
+      const offsetY = (Math.random() - 0.5) * 16;
       btnNon.style.opacity = String(p.fadeOpacity);
+      btnNon.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${nonScale})`;
       btnOui.style.width = '70%';
-      btnOui.style.fontSize = '1.18rem';
-
-      if (etat.nonFloating) {
-        returnNonToFlow();
-      }
     } else if (stage >= 3) {
-      // Non s'enfuit en flottant
-      if (!etat.nonFloating) {
-        floatNonButton();
-      }
-      const nonScale = 1 - stage * p.shrinkStep * 0.5;
-      btnNon.style.transform = `scale(${Math.max(nonScale, 0.5)})`;
+      // Non esquive avec un petit saut comique à l'intérieur de la carte
+      const nonScale = Math.max(0.58, 1 - stage * 0.08);
+      const offsetX = (Math.random() > 0.5 ? 1 : -1) * (18 + Math.random() * 22);
+      const offsetY = (Math.random() - 0.5) * 14;
+      btnNon.style.opacity = '0.85';
+      btnNon.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${nonScale})`;
     } else if (stage >= 1) {
-      // Non rétrécit
+      // Non rétrécit et s'incline légèrement
       const nonScale = 1 - stage * p.shrinkStep;
-      btnNon.style.transform = `scale(${Math.max(nonScale, 0.55)})`;
-
-      if (stage === 2) {
-        const offsetX = (Math.random() - 0.5) * 24;
-        const offsetY = (Math.random() - 0.5) * 12;
-        btnNon.style.transform = `scale(${Math.max(nonScale, 0.55)}) translate(${offsetX}px, ${offsetY}px)`;
-      }
+      const rot = (stage % 2 === 1 ? -3 : 3);
+      btnNon.style.transform = `scale(${Math.max(nonScale, 0.65)}) rotate(${rot}deg)`;
     }
-  }
-
-  function floatNonButton() {
-    const btnNon = document.getElementById('btn-non');
-    if (!btnNon) return;
-    const rect = btnNon.getBoundingClientRect();
-
-    btnNon.style.position = 'fixed';
-    btnNon.style.left = rect.left + 'px';
-    btnNon.style.top = rect.top + 'px';
-    btnNon.style.margin = '0';
-    btnNon.style.zIndex = '500';
-    etat.nonFloating = true;
-
-    if (!etat.isTouchDevice) {
-      document.addEventListener('pointermove', handlePointerMoveForFlee);
-    }
-  }
-
-  function returnNonToFlow() {
-    const btnNon = document.getElementById('btn-non');
-    if (!btnNon) return;
-    btnNon.style.position = '';
-    btnNon.style.left = '';
-    btnNon.style.top = '';
-    btnNon.style.margin = '';
-    btnNon.style.zIndex = '';
-    etat.nonFloating = false;
-    document.removeEventListener('pointermove', handlePointerMoveForFlee);
-  }
-
-  function handlePointerMoveForFlee(e) {
-    if (etat.tentatives < 3 || etat.tentatives > 4) return;
-    if (etat.reducedMotion) return;
-
-    const btnNon = document.getElementById('btn-non');
-    if (!btnNon || btnNon.style.display === 'none') return;
-
-    const rect = btnNon.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = e.clientX - cx;
-    const dy = e.clientY - cy;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-
-    if (dist < CONFIG.paliers.fleeDistance) {
-      const angle = Math.atan2(dy, dx);
-      const pushDist = CONFIG.paliers.fleeDistance + 45;
-      let newX = cx - Math.cos(angle) * pushDist - rect.width / 2;
-      let newY = cy - Math.sin(angle) * pushDist - rect.height / 2;
-      const margin = CONFIG.paliers.clampMargin;
-
-      newX = clamp(newX, margin, window.innerWidth - rect.width - margin);
-      newY = clamp(newY, margin, window.innerHeight - rect.height - margin);
-
-      btnNon.style.left = newX + 'px';
-      btnNon.style.top = newY + 'px';
-      btnNon.style.transition = 'left 0.2s var(--ease-enter), top 0.2s var(--ease-enter)';
-    }
-  }
-
-  function jumpNonRandom() {
-    const btnNon = document.getElementById('btn-non');
-    if (!btnNon || !etat.nonFloating) return;
-
-    const rect = btnNon.getBoundingClientRect();
-    const margin = CONFIG.paliers.clampMargin;
-    const maxX = window.innerWidth - rect.width - margin;
-    const maxY = window.innerHeight - rect.height - margin;
-
-    const newX = margin + Math.random() * (maxX - margin);
-    const newY = margin + Math.random() * (maxY - margin);
-
-    btnNon.style.transition = 'left 0.25s var(--ease-bounce), top 0.25s var(--ease-bounce)';
-    btnNon.style.left = newX + 'px';
-    btnNon.style.top = newY + 'px';
-  }
-
-  function recalcNonPosition() {
-    if (!etat.nonFloating) return;
-    const btnNon = document.getElementById('btn-non');
-    if (!btnNon) return;
-    const rect = btnNon.getBoundingClientRect();
-    const margin = CONFIG.paliers.clampMargin;
-    const x = clamp(rect.left, margin, window.innerWidth - rect.width - margin);
-    const y = clamp(rect.top, margin, window.innerHeight - rect.height - margin);
-    btnNon.style.left = x + 'px';
-    btnNon.style.top = y + 'px';
   }
 
   function shakeCard() {
@@ -509,20 +562,35 @@
     const celebMsg = document.getElementById('celeb-message');
     const celebCounter = document.getElementById('celeb-counter');
     const notifyBtn = document.getElementById('celeb-notify');
+    const notifyText = document.getElementById('celeb-notify-text');
 
     if (celebMsg) celebMsg.textContent = msg;
     if (celebCounter) celebCounter.textContent = pluralize(etat.tentatives);
 
     // Préparation de l'envoi WhatsApp pour prévenir l'expéditeur
+    const expName = (cfg.prenomExpediteur || '').trim();
+    const destName = (cfg.prenomDestinataire || '').trim();
+
+    const messageOui = expName
+      ? `Coucou ${expName} ! 💌 J'ai ouvert ta lettre et… J'AI DIT OUI ! 🎉💖🥰 Je suis tellement heureuse ! 💕✨`
+      : `J'ai ouvert ta lettre et… J'AI DIT OUI ! 🎉💖🥰 Je suis tellement heureuse ! 💕✨`;
+
+    etat.messageOui = messageOui;
+
     if (notifyBtn) {
-      const shareText = encodeURIComponent(`J'ai dit OUI ! 💕🥰 Je suis tellement content(e) !`);
+      const shareText = encodeURIComponent(messageOui);
+      let waUrl = `https://api.whatsapp.com/send?text=${shareText}`;
       if (cfg.telephoneExpediteur) {
-        const cleanTel = cfg.telephoneExpediteur.replace(/[^0-9+]/g, '');
-        notifyBtn.href = `https://wa.me/${cleanTel}?text=${shareText}`;
-      } else {
-        notifyBtn.href = `https://wa.me/?text=${shareText}`;
+        const cleanTel = cfg.telephoneExpediteur.replace(/[^0-9]/g, '');
+        if (cleanTel) {
+          waUrl = `https://api.whatsapp.com/send?phone=${cleanTel}&text=${shareText}`;
+        }
       }
-      notifyBtn.textContent = `💬 Prévenir ${cfg.prenomExpediteur} sur WhatsApp`;
+      notifyBtn.href = waUrl;
+    }
+
+    if (notifyText) {
+      notifyText.textContent = expName ? `Prévenir ${expName} sur WhatsApp 💬` : `Prévenir sur WhatsApp 💬`;
     }
   }
 
@@ -750,11 +818,32 @@
     return finalUrl;
   }
 
-  async function copyToClipboard(text) {
+  function getLetterTextMessage(url) {
+    const to = CONFIG.prenomDestinataire || 'Mon amour';
+    const from = CONFIG.prenomExpediteur ? `De la part de ${CONFIG.prenomExpediteur}` : 'De la part de quelqu\'un qui t\'aime';
+    const finalUrl = url || etat.generatedUrl || window.location.href;
+
+    return (
+      `💌 *UNE LETTRE D'AMOUR POUR TOI* 💌\n` +
+      `───────────────────────\n` +
+      `✨ *${from}*\n` +
+      `💝 *Pour : ${to}*\n\n` +
+      `Chère ${to},\n` +
+      `J'ai scellé pour toi une lettre secrète avec une question très importante à l'intérieur… 🤫💕\n\n` +
+      `Ne l'ouvre que si ton cœur bat la chamade ! 🕊️❤️\n\n` +
+      `👉 *Clique ici pour ouvrir et décacheter ta lettre :*\n` +
+      `${finalUrl}\n` +
+      `───────────────────────\n` +
+      `Scellée avec un cœur battant 💕`
+    );
+  }
+
+  async function copyToClipboard(text, customToast) {
+    const toastMsg = customToast || 'Copié dans le presse-papier ! 💌📋';
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(text);
-        showToast('Lien de la lettre copié ! 💌📋');
+        showToast(toastMsg);
         return;
       }
     } catch (e) { /* fallback */ }
@@ -768,28 +857,29 @@
       ta.select();
       document.execCommand('copy');
       document.body.removeChild(ta);
-      showToast('Lien de la lettre copié ! 💌📋');
+      showToast(toastMsg);
     } catch (e) {
       showToast('Erreur : impossible de copier 😢');
     }
   }
 
   async function shareLink(url) {
-    const to = CONFIG.prenomDestinataire;
+    const to = CONFIG.prenomDestinataire || 'Mon amour';
+    const textMsg = getLetterTextMessage(url);
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `💌 Une lettre pour ${to}`,
-          text: `J'ai préparé une surprise très spéciale pour toi… Ouvre vite cette lettre ! 💕`,
+          title: `💌 Une lettre d'amour pour ${to}`,
+          text: textMsg,
           url: url,
         });
       } catch (e) {
         if (e.name !== 'AbortError') {
-          await copyToClipboard(url);
+          await copyToClipboard(textMsg, 'Lettre complète copiée ! 💌📋');
         }
       }
     } else {
-      await copyToClipboard(url);
+      await copyToClipboard(textMsg, 'Lettre complète copiée ! 💌📋');
     }
   }
 
@@ -969,7 +1059,7 @@
       });
     }
 
-    // BOUTON "GÉNÉRER MA LETTRE" / "CRÉER MA PAGE" (SaaS)
+    // BOUTON "GÉNÉRER MA LETTRE" (SaaS)
     const btnGenerate = document.getElementById('btn-generate');
     if (btnGenerate) {
       btnGenerate.addEventListener('click', () => {
@@ -977,44 +1067,104 @@
         playSound('ding');
 
         const link = generateLink();
+        const letterText = getLetterTextMessage(link);
 
-        // Mettre à jour l'écran de partage
-        const shareUrlDisplay = document.getElementById('share-url-display');
-        if (shareUrlDisplay) shareUrlDisplay.textContent = link;
-
-        const shareToBadge = document.getElementById('share-to-badge');
-        if (shareToBadge) shareToBadge.textContent = CONFIG.prenomDestinataire;
-
-        // Préparer le lien direct WhatsApp
-        const btnWa = document.getElementById('btn-share-whatsapp');
-        if (btnWa) {
-          const waMsg = encodeURIComponent(
-            `Coucou ${CONFIG.prenomDestinataire} ! 💌 J'ai préparé une surprise romantique pour toi…\n` +
-            `Ouvre vite cette lettre scellée avec amour ici : ${link} 💕`
-          );
-          btnWa.href = `https://wa.me/?text=${waMsg}`;
+        // Mettre à jour l'aperçu textuel de la lettre d'amour
+        const letterPreviewText = document.getElementById('letter-preview-text');
+        if (letterPreviewText) {
+          letterPreviewText.textContent = letterText;
         }
 
-        // Basculer vers l'écran de partage avec enveloppe
+        const shareToBadge = document.getElementById('share-to-badge');
+        if (shareToBadge) shareToBadge.textContent = CONFIG.prenomDestinataire || 'toi';
+
+        // Préparer le lien direct WhatsApp avec le message de lettre d'amour complet
+        const btnWa = document.getElementById('btn-share-whatsapp');
+        if (btnWa) {
+          btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(letterText)}`;
+        }
+
+        // Basculer vers l'écran de partage
         showScreen('share');
-        showToast('Lettre créée avec succès ! 💌✨');
+        showToast('Lettre prête et scellée avec amour ! 💌✨');
       });
     }
 
     // Actions de l'écran de partage
-    const btnCopyShare = document.getElementById('btn-copy-share');
-    if (btnCopyShare) {
-      btnCopyShare.addEventListener('click', () => {
-        copyToClipboard(etat.generatedUrl || generateLink());
+
+    // 1. Bouton Instagram (Partage natif avec fallback presse-papier vers Instagram)
+    const btnShareInsta = document.getElementById('btn-share-instagram');
+    if (btnShareInsta) {
+      btnShareInsta.addEventListener('click', async () => {
+        ensureAudioCtx();
+        playSound('pop');
+        const link = etat.generatedUrl || generateLink();
+        const letterText = getLetterTextMessage(link);
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: `💌 Lettre d'amour pour ${CONFIG.prenomDestinataire}`,
+              text: letterText,
+              url: link,
+            });
+            showToast('Lettre partagée avec succès ! 💌✨');
+            return;
+          } catch (e) {
+            if (e.name === 'AbortError') return;
+          }
+        }
+
+        // Fallback mobile/desktop : copie et ouvre Instagram
+        await copyToClipboard(letterText, 'Lettre d\'amour copiée ! Colle-la en DM sur Instagram 💕📸');
+        setTimeout(() => {
+          window.open('https://www.instagram.com/direct/inbox/', '_blank');
+        }, 800);
       });
     }
 
+    // 2. Partage universel natif (SMS, Messenger, Snapchat...)
     const btnNativeShare = document.getElementById('btn-native-share');
     if (btnNativeShare) {
-      btnNativeShare.addEventListener('click', () => {
-        shareLink(etat.generatedUrl || generateLink());
+      btnNativeShare.addEventListener('click', async () => {
+        ensureAudioCtx();
+        playSound('pop');
+        const link = etat.generatedUrl || generateLink();
+        const letterText = getLetterTextMessage(link);
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: `💌 Lettre pour ${CONFIG.prenomDestinataire}`,
+              text: letterText,
+              url: link,
+            });
+            showToast('Lettre partagée ! 💌✨');
+          } catch (e) {
+            if (e.name !== 'AbortError') {
+              await copyToClipboard(letterText, 'Lettre d\'amour complète copiée ! 💌📋');
+            }
+          }
+        } else {
+          await copyToClipboard(letterText, 'Lettre d\'amour complète copiée ! 💌📋');
+        }
       });
     }
+
+    // 3. Copier la lettre d'amour complète (bouton principal et chip)
+    const copyLetterHandler = async () => {
+      ensureAudioCtx();
+      playSound('pop');
+      const link = etat.generatedUrl || generateLink();
+      const letterText = getLetterTextMessage(link);
+      await copyToClipboard(letterText, 'Lettre d\'amour complète copiée ! Prête à être envoyée 💌📋');
+    };
+
+    const btnCopyShare = document.getElementById('btn-copy-share');
+    if (btnCopyShare) btnCopyShare.addEventListener('click', copyLetterHandler);
+
+    const btnCopyChip = document.getElementById('btn-copy-letter-chip');
+    if (btnCopyChip) btnCopyChip.addEventListener('click', copyLetterHandler);
 
     // Tester l'ouverture de la lettre en tant qu'expéditeur
     const btnTestEnvelope = document.getElementById('btn-test-envelope');
@@ -1092,45 +1242,39 @@
       });
     }
 
-    // Actions écran de célébration
-    const celebCopy = document.getElementById('celeb-copy');
-    if (celebCopy) {
-      celebCopy.addEventListener('click', () => {
-        copyToClipboard(window.location.href);
+    // Actions de l'écran de célébration
+    const celebNotifyInsta = document.getElementById('celeb-notify-insta');
+    if (celebNotifyInsta) {
+      celebNotifyInsta.addEventListener('click', async () => {
+        ensureAudioCtx();
+        playSound('pop');
+        const msg = etat.messageOui || "J'ai dit OUI ! 🎉💖🥰 Je suis tellement heureuse ! 💕✨";
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "J'ai dit OUI ! 🎉💖",
+              text: msg,
+            });
+            showToast('Réponse partagée avec amour ! 💕🎉');
+            return;
+          } catch (e) {
+            if (e.name === 'AbortError') return;
+          }
+        }
+
+        // Fallback copie et toast
+        await copyToClipboard(msg, 'Message d\'amour copié ! Prêt à être envoyé sur Instagram ou SMS 💕📋');
       });
     }
 
-    // "Créer ma propre page" sur l'écran de célébration
-    const celebCreate = document.getElementById('celeb-create');
-    if (celebCreate) {
-      celebCreate.addEventListener('click', () => {
-        // Réinitialiser proprement l'URL sans recharger brutalement
-        try {
-          window.history.pushState({}, '', window.location.pathname);
-        } catch (e) {}
-
-        // Réinitialiser les états
-        etat.tentatives = 0;
-        etat.nonFloating = false;
-        const btnNonEl = document.getElementById('btn-non');
-        if (btnNonEl) {
-          btnNonEl.style.display = '';
-          btnNonEl.style.transform = '';
-          btnNonEl.style.opacity = '';
-          btnNonEl.removeAttribute('aria-hidden');
-          btnNonEl.tabIndex = 0;
-        }
-        const btnOuiEl = document.getElementById('btn-oui');
-        if (btnOuiEl) {
-          btnOuiEl.style.transform = '';
-          btnOuiEl.style.width = '';
-          btnOuiEl.style.fontSize = '';
-        }
-
-        // Remettre les étapes au début
-        showScreen('creator');
-        setWizardStep(1);
-        showToast('À ton tour de composer ta lettre d\'amour ! ✨💌');
+    const celebCopy = document.getElementById('celeb-copy');
+    if (celebCopy) {
+      celebCopy.addEventListener('click', async () => {
+        ensureAudioCtx();
+        playSound('pop');
+        const msg = etat.messageOui || "J'ai dit OUI ! 🎉💖🥰 Je suis tellement heureuse ! 💕✨";
+        await copyToClipboard(msg, 'Message d\'amour copié dans le presse-papier ! 💕📋');
       });
     }
 
