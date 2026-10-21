@@ -21,7 +21,7 @@
     preset: 'D',
     imageUrl: '',
 
-    // Étapes par ton (8 paliers pour le bouton Non avec question principale dynamique)
+    // Étapes par ton (8 paliers personnalisés, profondément humains et romantiques)
     etapes: {
       mignon: [
         {
@@ -32,145 +32,145 @@
         },
         {
           question: 'S\'il te plaît… Ne me brise pas le cœur ! 💔🥺',
-          message: 'Même le petit ourson te demande pardon à genoux… 🐻👉👈',
+          message: 'Moi-même je te supplie avec tout mon cœur et tout mon espoir… 🐻👉👈',
           image: '🐻',
           legende: 'un regard plein de douceur et d\'espoir'
         },
         {
-          question: 'Allez dis oui… Je te promets qu\'on sera si bien ! 🥞💕',
-          message: 'Je te ferai des crêpes au chocolat et plein de câlins ! 🥞🍓',
-          image: '🥞',
-          legende: 'tentative de corruption gourmande'
+          question: 'Allez dis oui… Je te promets qu\'on sera si heureux ensemble ! 💕',
+          message: 'Je prendrai tellement soin de toi, je serai toujours là pour toi… 🌹✨',
+          image: '🌹',
+          legende: 'une promesse d\'amour sincère'
         },
         {
-          question: 'Mon petit cœur ne tiendra jamais le choc… 💓',
+          question: 'Mon petit cœur ne tiendra jamais le coup sans toi… 💓',
           message: 'Écoute bien… il bat si fort pour toi : boum boum boum… 💗',
           image: '💓',
-          legende: 'rythme cardiaque en ébullition'
+          legende: 'mon cœur bat uniquement pour toi'
         },
         {
-          question: 'Tu vas vraiment me laisser pleurer toutes mes larmes ? 🐼',
-          message: 'Alerte mignonnerie en détresse absolue… *snif* 🥺',
-          image: '🐼',
-          legende: 'le petit panda a le cœur lourd'
+          question: 'Tu vas vraiment me laisser avec le cœur si lourd ? 🥺💔',
+          message: 'Moi-même j\'ai le cœur tellement lourd et serré de peine sans toi… 🥺',
+          image: '🥺',
+          legende: 'j\'ai le cœur lourd sans ton sourire'
         },
         {
-          question: 'Je fonds d\'amour pour toi, s\'il te plaît dis oui ! 🫠💕',
-          message: 'Mon cœur fond comme un nuage de guimauve sous ton regard… 🫠',
-          image: '🫠',
-          legende: 'fonte émotionnelle maximale'
+          question: 'Je t\'aime tellement fort… S\'il te plaît, dis-moi oui ! 🥺💕',
+          message: 'Tu illumines ma vie chaque jour, je ne veux que toi… 🕊️💗',
+          image: '💖',
+          legende: 'mes sentiments pour toi sont infinis'
         },
         {
-          question: 'Regarde : même le bouton Non s\'est enfui de honte ! 🚪😤',
-          message: 'Il a démissionné ! Il ne reste plus que l\'amour vrai… 💕',
-          image: '🚪',
-          legende: 'porte claquée, le refus n\'existe plus'
+          question: 'Mon cœur n\'attend plus que toi, offre-moi ce bonheur… 🌹💖',
+          message: 'Je ne peux plus imaginer ma vie sans toi… Tu es mon évidence. 💕',
+          image: '🌹',
+          legende: 'mon amour pour toi ne faiblira jamais'
         },
         {
-          question: 'Le destin l\'a décidé : nous deux, c\'est pour toujours ! ✨💖',
-          message: 'Clique sur ce grand OUI qui n\'attend que toi ! 🥰',
+          question: 'Dis-moi OUI et faisons de notre histoire un conte de fées ! ✨💖',
+          message: 'Regarde, tout mon amour t\'attend les bras grands ouverts… 🥰💕',
           image: '✨',
-          legende: 'la seule et unique réponse de l\'univers'
+          legende: 'notre plus belle histoire commence ici'
         },
       ],
       dramatique: [
         {
           question: 'Non ?! Tu oses poignarder mon cœur en plein vol ?! 💔',
-          message: 'S\'il te plaît… sinon mon âme sombrera dans un abîme sans fin ! 😭',
+          message: 'S\'il te plaît… sans toi mon existence perd toute sa lumière ! 😭',
           image: '💔',
-          legende: 'tragédie en direct'
+          legende: 'mon cœur saigne en silence'
         },
         {
-          question: 'S\'il te plaît, épargne-moi cette agonie sans fin ! 🧎😭',
-          message: '*tombe à genoux sous la pluie torrentielle* Pourquoi tant de cruauté ?!',
+          question: 'S\'il te plaît, épargne-moi cette déchirante douleur ! 🧎😭',
+          message: 'Je me mets à genoux devant toi… par pitié, ne me rejette pas !',
           image: '🧎',
-          legende: 'acte II, la désolation sentimentale'
+          legende: 'une prière venue du fond du cœur'
         },
         {
-          question: 'Le ciel s\'assombrit… Les violons de mon âme sanglotent ! 🎻',
-          message: 'Tempête sentimentale de catégorie 5 en approche immédiate… 🌧️',
+          question: 'Le ciel s\'assombrit… Mon âme pleure des torrents de larmes ! 🎻',
+          message: 'Comment pourrais-je vivre si tu refuses de m\'aimer en retour ? 🌧️',
           image: '🌧️',
-          legende: 'le tonnerre gronde'
+          legende: 'un chagrin immense sans toi'
         },
         {
-          question: 'Même Shakespeare n\'aurait osé écrire un tel supplice ! 📜',
-          message: 'Un requiem poignant pour cet amour flamboyant… 🥀',
+          question: 'Même dans mes pires cauchemars, je n\'aurais imaginé ce refus ! 📜',
+          message: 'Mon amour pour toi est si pur, si passionné, si brûlant… 🥀',
           image: '📜',
-          legende: 'acte III, les larmes du poète'
+          legende: 'les mots me manquent tant je t\'aime'
         },
         {
-          question: 'Mon âme vacille… Je défaille sur un lit de pétales flétris… 🥀',
-          message: 'Vois ce pauvre amant transi qui tremble dans l\'ombre… 🥀',
+          question: 'Mon âme vacille… Vois comme je tremble pour toi… 🥀',
+          message: 'Ne laisse pas cet amour s\'éteindre… donne-nous cette chance ! 🥀',
           image: '🥀',
-          legende: 'le rideau tremble'
+          legende: 'un espoir qui refuse de mourir'
         },
         {
-          question: 'L\'orchestre symphonique s\'affole au loin… Suspens fatal ! 🎭🎺',
-          message: 'Tension insoutenable… Vas-tu enfin prononcer ce OUI libérateur ? 🌟',
+          question: 'Chaque seconde sans ton accord est une torture… Dis OUI ! 🎭🎺',
+          message: 'Prends ma main et efface toute ma peine d\'un seul mot… 🌟',
           image: '🎭',
-          legende: 'dénouement tragique imminent'
+          legende: 'l\'attente est insoutenable'
         },
         {
-          question: 'Le bouton Non a succombé sous le poids de la fatalité 🌹⚰️',
-          message: 'Adieu, pauvre bouton Non ! La douleur a brisé ses rouages… 🌹',
+          question: 'La tristesse s\'incline enfin devant la force de mon amour ! 🌹💖',
+          message: 'Rien au monde ne pourra m\'empêcher de t\'aimer toujours plus fort… 🌹',
           image: '🌹',
-          legende: 'la fin du refus'
+          legende: 'l\'amour finit toujours par triompher'
         },
         {
-          question: 'Le triomphe de l\'amour est inéluctable… Dis OUI ! 🌟💕',
-          message: 'Notre destin s\'illumine d\'une grâce éternelle ! 💖',
+          question: 'Le triomphe de notre amour est écrit dans les étoiles… Dis OUI ! 🌟💕',
+          message: 'Notre destin s\'illumine d\'un bonheur éternel ! 💖✨',
           image: '🌟',
-          legende: 'triomphe romanesque absolu'
+          legende: 'notre amour est invincible'
         },
       ],
       chaotique: [
         {
-          question: 'Attends… t\'as vraiment osé appuyer sur Non ?! 🤨',
-          message: 'S\'il te plaît, réfléchis bien avant de faire crasher tout le serveur ! 🤔',
+          question: 'Attends… tu as vraiment osé appuyer sur Non ?! 🤨',
+          message: 'S\'il te plaît, regarde-moi dans les yeux et dis la vérité ! 💕',
           image: '🤨',
-          legende: 'erreur 404 : refus non accepté'
+          legende: 'je sais que tu as envie de dire oui'
         },
         {
-          question: 'S\'il te plaît… Ne force pas le système à imploser ! 💻',
-          message: 'Le bouton Non est parti sur Google taper "comment démissionner" 💻',
-          image: '💻',
-          legende: 'requête d\'urgence envoyée'
+          question: 'S\'il te plaît… Ne me fais pas languir comme ça ! 🥺',
+          message: 'Tu sais très bien qu\'on est faits pour être ensemble ! 💖',
+          image: '👉👈',
+          legende: 'tu joues avec mes nerfs de petit amoureux'
         },
         {
-          question: 'ALERTE ROUGE : tentative de refus non autorisée ! 🚨',
-          message: 'Panique générale dans la matrice sentimentale ! 💥',
-          image: '🚨',
-          legende: 'alarme maximale'
+          question: 'Alerte générale : mon cœur s\'emballe à 200 à l\'heure ! 🚨',
+          message: 'Arrête de faire semblant d\'hésiter, je sais que tu m\'aimes ! 💥',
+          image: '💓',
+          legende: 'mon cœur ne sait plus où donner de la tête'
         },
         {
-          question: 'Le bouton Non a officiellement posé un préavis de grève ! 📝',
-          message: 'Syndicat des boutons fatigués : "Trop c\'est trop !" ☕',
-          image: '📝',
-          legende: 'grève reconductible'
+          question: 'Tu essaies de m\'échapper, mais c\'est impossible ! 🏃‍♂️💨',
+          message: 'Je te suivrai jusqu\'au bout du monde pour obtenir ton sourire ! 💕',
+          image: '🌹',
+          legende: 'détermination amoureuse absolue'
         },
         {
-          question: 'Mon système interne est en PLS totale sous le canapé 🫠',
-          message: 'Surcharge émotionnelle critique… Vite, clique sur OUI ! ⚡',
+          question: 'Moi-même je ne sais plus quoi faire tellement je tiens à toi ! 🫠',
+          message: 'Allez, un seul petit mot magique et on s\'envole ensemble ! ⚡',
           image: '🫠',
-          legende: 'tentative de survie logicielle'
+          legende: 'complètement fou amoureux de toi'
         },
         {
-          question: 'FLASH INFO : Le bouton Non a fui vers une autre galaxie ! 🚀',
-          message: 'Mission spatiale improvisée pour fuir cette décision insensée ! 🛸',
-          image: '🛸',
-          legende: 'fusée en orbite'
+          question: 'Tu as vu comme j\'insiste ? C\'est parce que tu es unique ! 🚀',
+          message: 'Personne d\'autre que toi ne me fait ressentir ça… 💕',
+          image: '✨',
+          legende: 'tu es la seule dans mon cœur'
         },
         {
-          question: 'Le bouton Non s\'est désintégré dans une faille temporelle 👾',
-          message: 'Signal définitivement perdu ! Il ne reste qu\'un écran tout rose ! 💖',
-          image: '⚡',
-          legende: 'plus aucun signal'
+          question: 'Tous les doutes s\'effacent : tu es faite pour moi ! 💖',
+          message: 'Plus aucune hésitation possible, regarde ce grand bouton d\'amour ! 🌹',
+          image: '🥰',
+          legende: 'notre complicité est magique'
         },
         {
-          question: 'Plot twist : Tu n\'as plus d\'autre choix que d\'être à moi ! 🤯',
-          message: 'Victoire cosmique et intergalactique de l\'amour ! 🚀✨',
-          image: '🤯',
-          legende: 'game over pour le Non'
+          question: 'Tu n\'as plus d\'autre choix que de devenir mon bonheur ! 🤯💖',
+          message: 'Dis OUI et commençons notre plus belle aventure dès maintenant ! 🚀✨',
+          image: '🎉',
+          legende: 'le plus beau jour de notre vie'
         },
       ],
     },
