@@ -924,12 +924,23 @@ button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
   gap: 0.4rem;
   background: rgba(194, 65, 93, 0.12);
   color: var(--accent);
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1.15rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 600;
   margin-top: 0.5rem;
   animation: bounceHint 2s infinite ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: transform 0.25s var(--ease-bounce), background-color 0.25s ease;
+}
+.envelope-cta-badge:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(194, 65, 93, 0.2);
+}
+.envelope-cta-badge:active {
+  transform: translateY(0) scale(0.97);
 }
 
 @keyframes bounceHint {
@@ -947,6 +958,69 @@ button:hover .btn-icon-left, a[class*="btn-"]:hover .btn-icon-left {
   margin: 1.25rem 0;
   width: 100%;
 }
+
+/* Bannière d'info lien cliquable */
+.local-notice {
+  background: rgba(122, 158, 126, 0.12);
+  border: 1px solid var(--sauge-light);
+  border-radius: var(--radius-input);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  text-align: left;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+.local-notice-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.local-notice-text code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Boîte du lien direct URL */
+.share-url-box {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-input);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.share-url-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+.share-url-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}
+.share-url-display {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--accent);
+  background: rgba(194, 65, 93, 0.05);
+  padding: 0.5rem 0.65rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(194, 65, 93, 0.25);
+  word-break: break-all;
+  user-select: all;
+}
+
 /* Carte de la lettre prête à envoyer (style parchemin postal) */
 .letter-preview-box {
   background: var(--card-bg);

@@ -154,6 +154,12 @@
           </div>
 
           <div class="form-group">
+            <label class="form-label" for="field-public-url">🌐 Adresse de ton site en ligne (optionnel)</label>
+            <input type="url" class="form-input" id="field-public-url" value="https://walidsayaogo23-tech.github.io/ROMANCE/" placeholder="https://..." autocomplete="off">
+            <p class="form-hint">Le lien envoyé commencera par cette adresse pour être cliquable sur smartphone.</p>
+          </div>
+
+          <div class="form-group">
             <label class="form-label" for="field-photos">📷 Photos locales (max 5)</label>
             <input type="file" id="field-photos" accept="image/*" multiple style="font-size: 0.85rem; margin-top: 0.25rem;">
             <div id="photo-previews" class="photo-grid"></div>
@@ -212,12 +218,33 @@
         </div>
 
         <div class="share-links-container">
+          <!-- Alerte d'aide pour le lien cliquable -->
+          <div class="local-notice" id="local-notice">
+            <span class="local-notice-icon">💡</span>
+            <div class="local-notice-text">
+              <strong>Lien 100% cliquable :</strong> Ton message contient un lien sécurisé en ligne (<code>https://...</code>) prêt à être ouvert sur WhatsApp, SMS ou Instagram sans aucun blocage !
+            </div>
+          </div>
+
+          <!-- Affichage du lien direct URL -->
+          <div class="share-url-box">
+            <div class="share-url-header">
+              <span class="share-url-title">🔗 Lien direct de l'enveloppe :</span>
+              <button type="button" class="btn-copy-chip" id="btn-copy-raw-link-chip" title="Copier uniquement l'adresse du lien">
+                📋 Copier le lien
+              </button>
+            </div>
+            <div class="share-url-display" id="share-url-display">
+              <!-- Rempli dynamiquement -->
+            </div>
+          </div>
+
           <!-- Aperçu du message textuel de la lettre d'amour -->
           <div class="letter-preview-box">
             <div class="letter-preview-header">
               <span class="letter-preview-title">📜 Ta lettre d'amour prête à être envoyée</span>
               <button type="button" class="btn-copy-chip" id="btn-copy-letter-chip" title="Copier le message complet de la lettre">
-                📋 Copier
+                📋 Copier tout
               </button>
             </div>
             <div class="letter-preview-body" id="letter-preview-text">
@@ -249,6 +276,11 @@
                 <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
               </svg>
               <span>Partager sur d'autres applications (SMS...)</span>
+            </button>
+
+            <!-- Copier uniquement le lien direct URL -->
+            <button type="button" class="btn-gold btn-full" id="btn-copy-raw-link">
+              🔗 Copier uniquement le lien direct (URL)
             </button>
 
             <!-- Copier la lettre complète -->
@@ -296,7 +328,7 @@
           </div>
         </div>
 
-        <div class="envelope-cta-badge">
+        <div class="envelope-cta-badge" id="envelope-cta-badge" role="button" tabindex="0" aria-label="Ouvrir l'enveloppe">
           ❤️ Clique sur le cœur pour ouvrir ta lettre
         </div>
 

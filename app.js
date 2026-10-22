@@ -20,6 +20,7 @@
     ton: 'mignon',
     preset: 'D',
     imageUrl: '',
+    productionUrl: 'https://walidsayaogo23-tech.github.io/ROMANCE/',
 
     // Étapes par ton (8 paliers personnalisés, profondément humains et romantiques)
     etapes: {
@@ -554,13 +555,10 @@
 
     if (notifyBtn) {
       const shareText = encodeURIComponent(messageOui);
-      let waUrl = `https://api.whatsapp.com/send?text=${shareText}`;
-      if (cfg.telephoneExpediteur) {
-        const cleanTel = cfg.telephoneExpediteur.replace(/[^0-9]/g, '');
-        if (cleanTel) {
-          waUrl = `https://api.whatsapp.com/send?phone=${cleanTel}&text=${shareText}`;
-        }
-      }
+      const cleanTel = cfg.telephoneExpediteur ? cfg.telephoneExpediteur.replace(/[^0-9]/g, '') : '';
+      const waUrl = cleanTel
+        ? `https://wa.me/${cleanTel}?text=${shareText}`
+        : `https://wa.me/?text=${shareText}`;
       notifyBtn.href = waUrl;
     }
 
@@ -586,13 +584,10 @@
         `Coucou${expName ? ' ' + expName : ''}… 🕊️\n` +
         `J'ai bien reçu ta lettre d'amour. Je voulais t'écrire pour te dire que ça m'a beaucoup touchée… Prends bien soin de toi. 🥺`
       );
-      let waUrl = `https://api.whatsapp.com/send?text=${waMsg}`;
-      if (cfg.telephoneExpediteur) {
-        const cleanTel = cfg.telephoneExpediteur.replace(/[^0-9]/g, '');
-        if (cleanTel) {
-          waUrl = `https://api.whatsapp.com/send?phone=${cleanTel}&text=${waMsg}`;
-        }
-      }
+      const cleanTel = cfg.telephoneExpediteur ? cfg.telephoneExpediteur.replace(/[^0-9]/g, '') : '';
+      const waUrl = cleanTel
+        ? `https://wa.me/${cleanTel}?text=${waMsg}`
+        : `https://wa.me/?text=${waMsg}`;
       waBtn.href = waUrl;
     }
 
@@ -798,6 +793,33 @@
   // ════════════════════════════════════════════
   // GÉNÉRATION & PARTAGE DU LIEN D'AMOUR
   // ════════════════════════════════════════════
+  function isLocalEnvironment() {
+    return (
+      window.location.protocol === 'file:' ||
+      window.location.origin === 'null' ||
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      !window.location.hostname
+    );
+  }
+
+  function getBaseUrl() {
+    // 1. Si l'utilisateur a renseigné une adresse personnalisée dans le formulaire
+    const customPublic = document.getElementById('field-public-url')?.value?.trim();
+    if (customPublic && (customPublic.startsWith('http://') || customPublic.startsWith('https://'))) {
+      const clean = customPublic.split('?')[0].replace(/\/$/, '') + '/';
+      return clean;
+    }
+
+    // 2. Si l'application tourne déjà en ligne sur un vrai serveur ou domaine public
+    if (!isLocalEnvironment()) {
+      return (window.location.origin + window.location.pathname).replace(/\/$/, '') + '/';
+    }
+
+    // 3. En environnement local (file:// ou localhost), on utilise par défaut le site officiel GitHub Pages
+    return CONFIG.productionUrl || 'https://walidsayaogo23-tech.github.io/ROMANCE/';
+  }
+
   function generateLink() {
     const to = sanitizeName(document.getElementById('field-to').value) || CONFIG.prenomDestinataire;
     const from = sanitizeName(document.getElementById('field-from').value) || CONFIG.prenomExpediteur;
@@ -825,7 +847,7 @@
     CONFIG.telephoneExpediteur = tel;
     CONFIG.imageUrl = imgUrl;
 
-    const base = window.location.origin + window.location.pathname;
+    const base = getBaseUrl();
     const finalUrl = base + '?' + params.toString();
     etat.generatedUrl = finalUrl;
     return finalUrl;
@@ -837,16 +859,14 @@
     const finalUrl = url || etat.generatedUrl || window.location.href;
 
     return (
-      `💌 *UNE LETTRE D'AMOUR POUR TOI* 💌\n` +
-      `───────────────────────\n` +
+      `💌 *UNE LETTRE D'AMOUR POUR TOI* 💌\n\n` +
       `✨ *${from}*\n` +
       `💝 *Pour : ${to}*\n\n` +
       `Chère ${to},\n` +
       `J'ai scellé pour toi une lettre secrète avec une question très importante à l'intérieur… 🤫💕\n\n` +
       `Ne l'ouvre que si ton cœur bat la chamade ! 🕊️❤️\n\n` +
-      `👉 *Clique ici pour ouvrir et décacheter ta lettre :*\n` +
-      `${finalUrl}\n` +
-      `───────────────────────\n` +
+      `👉 *Clique sur ce lien pour ouvrir et décacheter ta lettre :*\n\n` +
+      `${finalUrl}\n\n` +
       `Scellée avec un cœur battant 💕`
     );
   }
@@ -1082,6 +1102,18 @@
         const link = generateLink();
         const letterText = getLetterTextMessage(link);
 
+        // Afficher l'alerte d'aide si local
+        const localNotice = document.getElementById('local-notice');
+        if (localNotice) {
+          localNotice.style.display = isLocalEnvironment() ? 'flex' : 'none';
+        }
+
+        // Afficher le lien direct dans la boîte dédiée
+        const shareUrlDisplay = document.getElementById('share-url-display');
+        if (shareUrlDisplay) {
+          shareUrlDisplay.textContent = link;
+        }
+
         // Mettre à jour l'aperçu textuel de la lettre d'amour
         const letterPreviewText = document.getElementById('letter-preview-text');
         if (letterPreviewText) {
@@ -1091,10 +1123,10 @@
         const shareToBadge = document.getElementById('share-to-badge');
         if (shareToBadge) shareToBadge.textContent = CONFIG.prenomDestinataire || 'toi';
 
-        // Préparer le lien direct WhatsApp avec le message de lettre d'amour complet
+        // Préparer le lien direct WhatsApp officiel
         const btnWa = document.getElementById('btn-share-whatsapp');
         if (btnWa) {
-          btnWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(letterText)}`;
+          btnWa.href = `https://wa.me/?text=${encodeURIComponent(letterText)}`;
         }
 
         // Basculer vers l'écran de partage
@@ -1164,7 +1196,21 @@
       });
     }
 
-    // 3. Copier la lettre d'amour complète (bouton principal et chip)
+    // 3. Copier uniquement le lien direct de l'enveloppe
+    const copyRawLinkHandler = async () => {
+      ensureAudioCtx();
+      playSound('pop');
+      const link = etat.generatedUrl || generateLink();
+      await copyToClipboard(link, 'Lien direct de l\'enveloppe copié ! 🔗💌');
+    };
+
+    const btnCopyRawLink = document.getElementById('btn-copy-raw-link');
+    if (btnCopyRawLink) btnCopyRawLink.addEventListener('click', copyRawLinkHandler);
+
+    const btnCopyRawChip = document.getElementById('btn-copy-raw-link-chip');
+    if (btnCopyRawChip) btnCopyRawChip.addEventListener('click', copyRawLinkHandler);
+
+    // 4. Copier la lettre d'amour complète (bouton principal et chip)
     const copyLetterHandler = async () => {
       ensureAudioCtx();
       playSound('pop');
@@ -1214,6 +1260,20 @@
       envelopeHeart.addEventListener('click', (e) => {
         e.stopPropagation();
         triggerEnvelopeOpening();
+      });
+    }
+
+    const envelopeCtaBadge = document.getElementById('envelope-cta-badge');
+    if (envelopeCtaBadge) {
+      envelopeCtaBadge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerEnvelopeOpening();
+      });
+      envelopeCtaBadge.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          triggerEnvelopeOpening();
+        }
       });
     }
 
